@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Xchange</title>
+</head>
+<body>
+    <div class="container">
+        <div class="chat-entry">
+            <form action="chat.html" class="form">
+                <div class="name-input">
+                    <label for="username" class="name-inp">Username</label>
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Enter username ..."
+                        required
+                    />
+                </div>
+                <div class="room-input">
+                    <label for="room" class="room-inp">Room</label>
+                    <select name="room" id="room" class="room-sel">
+                        <option value="" disabled selected>Select your option</option>
+                        <option value="Room 1">Room 1</option>
+                        <option value="Room 2">Room 2</option>
+                        <option value="Room 3">Room 3</option>
+                        <option value="Room 4">Room 4</option>
+                        <option value="Room 5">Room 5</option>
+                        <option value="Room 6">Room 6</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Join Chat</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
