@@ -11,7 +11,7 @@ const server = http.createServer(app);
 const PORT = process.env.PORT || 3000;
 const io = socketio(server);
 const botName = 'Admin'
-        
+
 io.on('connection', socket => {
 
     socket.on('joinRoom', ({ username, room }) => {
@@ -29,7 +29,8 @@ io.on('connection', socket => {
         //- Send users and room info
         io.to(user.room).emit('roomUsers', {
             room: user.room,
-            users: getRoomUsers(user.room)
+            users: getRoomUsers(user.room),
+            curUser: getCurrentUser(socket.id)
         });
   
     });
@@ -44,7 +45,6 @@ io.on('connection', socket => {
     socket.on('disconnect', () => {
 
         const user = userLeave(socket.id);
-        console.log(user);
         
         if(user) {
             io.to(user.room).emit('message', formatMessage(botName, `${user.username} has left the chat`));

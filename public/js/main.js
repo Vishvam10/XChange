@@ -17,9 +17,10 @@ const socket = io();
 socket.emit('joinRoom', { username, room });
 
 // Get room and users info
-socket.on('roomUsers', ({ room, users }) => {
+socket.on('roomUsers', ({ room, users, curUser }) => {
     opRoomName(room);
     opUsers(users);
+    opCurUser(curUser.username);
 });
 
 // Message form server
@@ -30,7 +31,7 @@ socket.on('message', message => {
     chatArea.scrollTop = chatArea.scrollHeight;
 });
 
-// Chat Entry - Login
+//- Chat Entry - Login
 const inp = document.getElementById('message1');
 
 function getMessageFromUser(e) {
@@ -46,13 +47,13 @@ inp.addEventListener("keyup", (e) => {
     if (e.keyCode === 13) {
       getMessageFromUser(e);
     }
-  });
+});
 
-btn.addEventListener('click', (e) => {
+  btn.addEventListener('click', (e) => {
    getMessageFromUser(e)
 });
 
-// Output message to DOM
+//- Output message to DOM
 function opMessage(message) {
     const markup =
     `
@@ -67,17 +68,20 @@ function opMessage(message) {
     chatArea.insertAdjacentHTML('beforeend', markup);
 }
 
-// Add room name to DOM
+//- Add room name to DOM
 function opRoomName(room) {
     roomNo.innerText = room;
 }
 
-// Add users to DOM
-
+//- Add users to DOM
 function opUsers(users) {
     userList.innerHTML = `${users.map(user => `<li class="user">${user.username}</li>`).join('')}`;
 }
 
+//- Add current user to DOM
+function opCurUser(curUser) {
+    currentUser.innerText = curUser;
+}
 
 leave.addEventListener('click', () => {
     const leaveRoom = confirm('Are you sure you want to leave the chatroom?');
