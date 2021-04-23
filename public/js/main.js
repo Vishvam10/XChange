@@ -1,11 +1,22 @@
+const chatContainer = document.querySelector(".chat-container");
 const chatArea = document.querySelector(".chat-area");
+const chatDisplay = document.querySelector(".chat-display");
 const roomNo = document.querySelector(".roomno");
+const lines = document.querySelector(".lines");
+const line1 = document.querySelector(".line1");
+const line2 = document.querySelector(".line2");
 const currentUser = document.querySelector(".username");
 const userList = document.querySelector(".users-list");
+const user = document.querySelector(".user");
+const inp = document.getElementById('message1');
+const footerText = document.querySelector(".x");
 const btn = document.querySelector(".send-btn");
 const panel = document.querySelector(".panel");
 const leave = panel.childNodes[3];
 
+// console.log(inputElements[0]);
+
+var i, j;
 // Get username and room from URL
 const { username, room } = Qs.parse(location.search, {
     ignoreQueryPrefix: true
@@ -32,7 +43,6 @@ socket.on('message', message => {
 });
 
 //- Chat Entry - Login
-const inp = document.getElementById('message1');
 
 function getMessageFromUser(e) {
     e.preventDefault();
@@ -90,3 +100,33 @@ leave.addEventListener('click', () => {
     } else {
     }
 });
+
+//- Dark theme
+const themeSwitch = document.querySelector(".panel").childNodes[1];
+// console.log(themeSwitch);
+themeSwitch.addEventListener("click", () => {
+    if(chatContainer.style.background != "rgba(0, 0, 0, 0.9)") {
+        chatContainer.style.background = "rgba(0,0,0,0.9)";
+        chatDisplay.style.border = "2px solid white";
+        chatDisplay.style.boxShadow = "none";
+        lines.style.backgroundColor = "white";
+        line1.style.backgroundColor = "white";
+        line2.style.backgroundColor = "white";
+        currentUser.style.color = "white";
+        user.style.backgroundColor = "rgba(255, 255, 255, 0.4)";
+        inp.style.color = "white";
+        footerText.style.color = "white";
+    } 
+    if(chatContainer.style.background == "rgba(0, 0, 0, 0.9)") {
+        chatContainer.style.background = "linear-gradient(to right, #d3cce3, #e9e4f0)";
+        chatDisplay.style.border = "1px solid black";
+        chatDisplay.style.boxShadow = "0px 1.4rem 4.2rem rgb(0 0 0 / 20%)";
+        lines.style.backgroundColor = "black";
+        line1.style.backgroundColor = "black";
+        line2.style.backgroundColor = "black";
+        currentUser.style.color = "black";
+        user.style.backgroundColor = "rgba(0, 0, 0, 0.2)";  
+        inp.style.color = "black";
+        footerText.style.color = "black";
+    } 
+})
