@@ -11,7 +11,6 @@ const { username, room } = Qs.parse(location.search, {
     ignoreQueryPrefix: true
 });
 
-
 const socket = io();
 
 // Join chatroom
@@ -32,13 +31,25 @@ socket.on('message', message => {
 });
 
 // Chat Entry - Login
-btn.addEventListener('click', (e) => {
+const inp = document.getElementById('message1');
+
+function getMessageFromUser(e) {
     e.preventDefault();
-    const msg = document.getElementById('message1').value;
+    const msg = inp.value;
     if(msg != "") {
         socket.emit('chatMessage', msg);
         document.getElementById('message1').value = "";
     } 
+}
+
+inp.addEventListener("keyup", (e) => {
+    if (e.keyCode === 13) {
+      getMessageFromUser(e);
+    }
+  });
+
+btn.addEventListener('click', (e) => {
+   getMessageFromUser(e)
 });
 
 // Output message to DOM
@@ -62,16 +73,6 @@ function opRoomName(room) {
 }
 
 // Add users to DOM
-
-// function opUsers(users) {
-//     userList.innerHTML = '';
-//     users.forEach((user) => {
-//       const li = document.createElement('li');
-//       li.classList.add("user")
-//       li.innerText = user.username;
-//       userList.appendChild(li);
-//     });
-//   }
 
 function opUsers(users) {
     userList.innerHTML = `${users.map(user => `<li class="user">${user.username}</li>`).join('')}`;
