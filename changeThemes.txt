@@ -1,0 +1,24 @@
+const messageBox = document.querySelector(".message-box");
+const circleContainer = document.querySelector(".circle-container");
+const circles = circleContainer.childNodes;
+
+console.log("HELLO");
+
+//- Color Schemes
+function changeTheme(userInput) {
+    mes.style.background = `${userInput}`;
+}
+
+for(i=1; i<=15; i=i+2) {
+    circles[i].addEventListener('click', e => {
+        const circleClass = e.target.id;
+        console.log(circleClass);
+        console.log(e.target);
+        const c = document.getElementById(`${circleClass}`);
+        const circleCSS = getComputedStyle(c).backgroundImage;
+        console.log(circleCSS);
+        // const color1 = circleCSS.split("rgb")[1]; 
+        // console.log(color1);
+        changeTheme(circleCSS);
+    }) 
+}
