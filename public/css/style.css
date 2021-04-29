@@ -320,8 +320,9 @@ ion-icon:active {
   transform: scale(1);
 }
 
-ion-icon[name="settings-outline"] {
+ion-icon[name="moon-outline"] {
   font-size: 2rem;
+  color: rgb(75, 75, 75);
 }
 
 ion-icon[name="exit-outline"] {
@@ -331,6 +332,7 @@ ion-icon[name="exit-outline"] {
 
 ion-icon[name="chevron-forward-outline"] {
   font-size: 2.8rem;
+  color: rgb(75, 75, 75);
 }
 
 #switch {
@@ -575,8 +577,8 @@ a {
   transform: scale(1);
 }
 
-.l1 {
-  color: rgb(82, 7, 223);
+#l1 {
+  color: rgb(123, 63, 243);
   font-weight: 600;
 }
 
@@ -584,6 +586,7 @@ a {
   position: absolute;
   bottom: 2rem;
   font-size: 1.6rem;
+  color: rgb(75, 75, 75);
 }
 
 ::-webkit-scrollbar {

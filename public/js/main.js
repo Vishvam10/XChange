@@ -9,14 +9,12 @@ const currentUser = document.querySelector(".username");
 const userList = document.querySelector(".users-list");
 const user = document.querySelector(".user");
 const inp = document.getElementById('message1');
-const footerText = document.querySelector(".x");
 const btn = document.querySelector(".send-btn");
 const panel = document.querySelector(".panel");
 const leave = panel.childNodes[3];
+const l1 = document.getElementById('l1');
 
-// console.log(inputElements[0]);
-
-var i, j;
+var i;
 // Get username and room from URL
 const { username, room } = Qs.parse(location.search, {
     ignoreQueryPrefix: true
@@ -114,8 +112,8 @@ themeSwitch.addEventListener("click", () => {
         line2.style.backgroundColor = "white";
         currentUser.style.color = "white";
         user.style.backgroundColor = "rgba(255, 255, 255, 0.4)";
-        inp.style.color = "white";
-        footerText.style.color = "white";
+        inp.style.color = "rgba(255, 255, 255, 1)";
+        l1.style.color = "white";
     } 
     if(chatContainer.style.background == "rgba(0, 0, 0, 0.9)") {
         chatContainer.style.background = "linear-gradient(to right, #d3cce3, #e9e4f0)";
@@ -127,6 +125,6 @@ themeSwitch.addEventListener("click", () => {
         currentUser.style.color = "black";
         user.style.backgroundColor = "rgba(0, 0, 0, 0.2)";  
         inp.style.color = "black";
-        footerText.style.color = "black";
+        l1.style.color = "black";
     } 
 })
